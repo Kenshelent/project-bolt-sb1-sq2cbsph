@@ -19,7 +19,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import {
   ChevronLeft,
   ChevronRight,
-  MoveHorizontal as MoreHorizontal,
+  MoreHorizontal,
   Play,
 } from 'lucide-react-native';
 import DefaultAlbumCover from '@/components/DefaultAlbumCover';
