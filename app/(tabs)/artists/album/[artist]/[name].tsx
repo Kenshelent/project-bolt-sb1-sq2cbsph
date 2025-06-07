@@ -19,7 +19,7 @@ import { BlurView } from 'expo-blur';
 import Colors from '@/constants/Colors';
 import { usePlaybackStatus } from '@/hooks/usePlaybackStatus';
 import { router, useLocalSearchParams } from 'expo-router';
-import { ChevronLeft, Play, MoveHorizontal as MoreHorizontal } from 'lucide-react-native';
+import { ChevronLeft, Play, MoreHorizontal } from 'lucide-react-native';
 import SongItem from '@/components/SongItem';
 import DefaultAlbumCover from '@/components/DefaultAlbumCover';
 
