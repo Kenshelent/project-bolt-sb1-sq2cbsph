@@ -19,9 +19,11 @@ import { BlurView } from 'expo-blur';
 import Colors from '@/constants/Colors';
 import { usePlaybackStatus } from '@/hooks/usePlaybackStatus';
 import { router, useLocalSearchParams } from 'expo-router';
-import { ChevronLeft, Play, MoveHorizontal as MoreHorizontal } from 'lucide-react-native';
+import { ChevronLeft, Play, MoreHorizontal } from 'lucide-react-native';
 import SongItem from '@/components/SongItem';
 import DefaultAlbumCover from '@/components/DefaultAlbumCover';
+
+const HEADER_HEIGHT = 60;
 
 type AlbumBannerProps = {
   artworkUrl: string | null | undefined;
@@ -92,7 +94,6 @@ export default function AlbumScreen() {
   const { tracks, currentTrack, playTrack } = usePlaybackStatus();
 
   const insets = useSafeAreaInsets();
-  const HEADER_HEIGHT = 60;
 
   const [albumHeaderHeight, setAlbumHeaderHeight] = useState(0);
   const [showAlbumNameInHeader, setShowAlbumNameInHeader] = useState(false);
@@ -245,7 +246,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    height: 60,
+    height: HEADER_HEIGHT,
   },
   blurCircle: {
     width: 32,

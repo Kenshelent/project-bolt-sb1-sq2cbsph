@@ -4,7 +4,7 @@ import { Track } from '@/context/MusicContext';
 import Colors from '@/constants/Colors';
 import DefaultAlbumCover from './DefaultAlbumCover';
 import { usePlaylists, Playlist } from '@/hooks/usePlaylists';
-import { MoveHorizontal as MoreHorizontal, Play, Share2, Info, Trash2 } from 'lucide-react-native';
+import { MoreHorizontal, Play, Share2, Info, Trash2 } from 'lucide-react-native';
 import { usePlaybackStatus } from '@/hooks/usePlaybackStatus';
 import EditSongScreen from './EditSongScreen';
 import * as Sharing from 'expo-sharing';

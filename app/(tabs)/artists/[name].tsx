@@ -19,18 +19,19 @@ import { router, useLocalSearchParams } from 'expo-router';
 import {
   ChevronLeft,
   ChevronRight,
-  MoveHorizontal as MoreHorizontal,
+  MoreHorizontal,
   Play,
 } from 'lucide-react-native';
 import DefaultAlbumCover from '@/components/DefaultAlbumCover';
 import { ArtworkBanner } from '@/components/ArtworkBanner';
+
+const HEADER_HEIGHT = 60;
 
 export default function ArtistScreen() {
   const { name } = useLocalSearchParams<{ name: string }>();
   const { tracks, playTrack } = usePlaybackStatus();
   const insets = useSafeAreaInsets();
 
-  const HEADER_HEIGHT = 60;
   const [showArtistNameInHeader, setShowArtistNameInHeader] = useState(false);
   const [artistHeaderHeight, setArtistHeaderHeight] = useState(0);
 
@@ -216,7 +217,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    height: 60, // HEADER_HEIGHT
+    height: HEADER_HEIGHT,
   },
   blurCircle: {
     width: 32,
