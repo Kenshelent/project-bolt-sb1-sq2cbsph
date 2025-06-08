@@ -11,7 +11,7 @@ export default function TabLayout() {
   
   return (
     <View style={styles.container}>
-      <SafeAreaView style={styles.safeArea} edges={['top']}>
+      <SafeAreaView style={styles.safeArea} edges={[]}>
         <Tabs
           screenOptions={{
             tabBarActiveTintColor: Colors.tint,

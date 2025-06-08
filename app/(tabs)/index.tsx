@@ -43,7 +43,7 @@ export default function LibraryScreen() {
   }
 
   return (
-    <SafeAreaView edges={['bottom']} style={styles.container}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>Library</Text>
         <View style={styles.headerContainer}>
