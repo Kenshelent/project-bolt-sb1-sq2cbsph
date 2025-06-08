@@ -65,7 +65,7 @@ export default function PlaylistsScreen() {
   );
 
   return (
-    <SafeAreaView edges={['bottom']} style={styles.container}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>Playlists</Text>
         
