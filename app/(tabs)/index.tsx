@@ -9,6 +9,7 @@ import EmptyLibrary from '@/components/EmptyLibrary';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { importMusicFiles, showImportResult, ImportProgress } from '@/utils/musicImport';
 import { useState } from 'react';
+import { FontFamily, FontSize, Spacing, Button } from '@/constants/Theme';
 
 export default function LibraryScreen() {
   const { tracks, loadSavedTracks, playTrack, addTracks } = usePlaybackStatus();
@@ -105,61 +106,61 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingHorizontal: 16,
+    paddingHorizontal: Spacing.lg,
   },
   title: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: 34,
+    fontFamily: FontFamily.semibold,
+    fontSize: FontSize.heading,
     color: Colors.text,
-    marginTop: 8,
-    marginBottom: 16,
+    marginTop: Spacing.sm,
+    marginBottom: Spacing.lg,
   },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: Spacing.lg,
   },
   libraryCount: {
-    fontFamily: 'Inter-Medium',
-    fontSize: 14,
+    fontFamily: FontFamily.medium,
+    fontSize: FontSize.sm,
     color: Colors.textSecondary,
   },
   addButton: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.tint,
-    paddingVertical: 6,
-    paddingHorizontal: 12,
+    paddingVertical: Button.paddingVertical,
+    paddingHorizontal: Button.paddingHorizontal,
     borderRadius: 16,
   },
   addButtonDisabled: {
     opacity: 0,
   },
   addButtonText: {
-    fontFamily: 'Inter-Medium',
-    fontSize: 14,
+    fontFamily: FontFamily.medium,
+    fontSize: FontSize.sm,
     color: Colors.white,
-    marginLeft: 4,
+    marginLeft: Spacing.sm,
   },
   progressContainer: {
     backgroundColor: Colors.backgroundSecondary,
-    padding: 12,
-    marginBottom: 16,
+    padding: Spacing.md,
+    marginBottom: Spacing.lg,
     borderRadius: 8,
   },
   progressText: {
-    fontFamily: 'Inter-Medium',
-    fontSize: 14,
+    fontFamily: FontFamily.medium,
+    fontSize: FontSize.sm,
     color: Colors.text,
-    marginBottom: 4,
+    marginBottom: Spacing.sm,
   },
   progressFileName: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 12,
+    fontFamily: FontFamily.regular,
+    fontSize: FontSize.xs,
     color: Colors.textSecondary,
   },
   listContent: {
-    paddingBottom: 100,
+    paddingBottom: Spacing.xxl * 3,
   },
 });

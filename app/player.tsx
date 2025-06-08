@@ -11,6 +11,7 @@ import DefaultAlbumCover from '@/components/DefaultAlbumCover';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import LyricsView from '@/components/LyricsView';
+import { FontFamily, FontSize, Spacing, Button } from '@/constants/Theme';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const ARTWORK_SIZE = SCREEN_WIDTH - 48;
@@ -243,7 +244,7 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
-    paddingHorizontal: 24,
+    paddingHorizontal: Spacing.xl,
   },
   pullHandle: {
     width: 40,
@@ -259,7 +260,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 24,
+    marginTop: Spacing.xl,
     height: ARTWORK_SIZE,
     marginHorizontal: -PREVIEW_SPACING,
   },
@@ -303,8 +304,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   trackInfoContainer: {
-    marginTop: 32,
-    marginBottom: 20,
+    marginTop: Spacing.xxl,
+    marginBottom: Spacing.lg,
   },
   trackTitleRow: {
     flexDirection: 'row',
@@ -313,19 +314,19 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   trackTitle: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: 24,
+    fontFamily: FontFamily.semibold,
+    fontSize: FontSize.xl,
     color: Colors.text,
     flex: 1,
   },
   artistName: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 18,
+    fontFamily: FontFamily.regular,
+    fontSize: FontSize.lg,
     color: Colors.textSecondary,
   },
   seekBarContainer: {
     width: '100%',
-    marginBottom: 24,
+    marginBottom: Spacing.xl,
   },
   timeContainer: {
     flexDirection: 'row',
@@ -334,21 +335,21 @@ const styles = StyleSheet.create({
     marginTop: -6,
   },
   timeText: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 12,
+    fontFamily: FontFamily.regular,
+    fontSize: FontSize.xs,
     color: Colors.textSecondary,
   },
   controlsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 45,
+    marginBottom: Spacing.xxl + Spacing.lg,
   },
   shuffleButton: {
-    padding: 12,
+    padding: Spacing.md,
   },
   repeatButton: {
-    padding: 12,
+    padding: Spacing.md,
   },
   mainControls: {
     flexDirection: 'row',
@@ -356,28 +357,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   controlButton: {
-    padding: 12,
+    padding: Spacing.md,
   },
   playPauseButton: {
     width: 72,
     height: 72,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 24,
+    marginHorizontal: Spacing.xl,
   },
   lyricButton: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    paddingVertical: 16,
+    paddingVertical: Spacing.xl,
     borderRadius: 20,
     alignItems: 'center',
-    marginBottom: Platform.OS === 'ios' ? 0 : 24,
+    marginBottom: Platform.OS === 'ios' ? 0 : Spacing.xl,
   },
   lyricButtonActive: {
     backgroundColor: Colors.tint,
   },
   lyricButtonText: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: 16,
+    fontFamily: FontFamily.semibold,
+    fontSize: FontSize.md,
     color: Colors.text,
     letterSpacing: 1,
   },
@@ -385,10 +386,10 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   noTrackText: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 18,
+    fontFamily: FontFamily.regular,
+    fontSize: FontSize.lg,
     color: Colors.textSecondary,
     textAlign: 'center',
-    marginTop: 40,
+    marginTop: Spacing.xxl + Spacing.lg,
   },
 });

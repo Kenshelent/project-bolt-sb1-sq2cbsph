@@ -10,6 +10,7 @@ import EditSongScreen from './EditSongScreen';
 import * as Sharing from 'expo-sharing';
 import { Alert } from 'react-native';
 import { router } from 'expo-router';
+import { FontFamily, FontSize, Spacing, Button } from '@/constants/Theme';
 
 interface SongItemProps {
   track: Track;
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: Spacing.md,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: Colors.border,
   },
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 6,
     overflow: 'hidden',
-    marginRight: 12,
+    marginRight: Spacing.md,
   },
   image: {
     width: '100%',
@@ -179,18 +180,18 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   title: {
-    fontFamily: 'Inter-Medium',
-    fontSize: 16,
+    fontFamily: FontFamily.medium,
+    fontSize: FontSize.md,
     color: Colors.text,
-    marginBottom: 4,
+    marginBottom: Spacing.sm,
   },
   artist: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 14,
+    fontFamily: FontFamily.regular,
+    fontSize: FontSize.sm,
     color: Colors.textSecondary,
   },
   menuButton: {
-    padding: 4,
+    padding: Spacing.xs,
   },
   modalOverlay: {
     flex: 1,
@@ -201,21 +202,21 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.backgroundSecondary,
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
-    paddingTop: 16,
-    paddingBottom: 32,
+    paddingTop: Spacing.lg,
+    paddingBottom: Spacing.xxl,
   },
   menuHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    marginBottom: 16,
+    paddingHorizontal: Spacing.lg,
+    marginBottom: Spacing.lg,
   },
   menuArtwork: {
     width: 56,
     height: 56,
     borderRadius: 8,
     overflow: 'hidden',
-    marginRight: 16,
+    marginRight: Spacing.lg,
   },
   menuImage: {
     width: '100%',
@@ -225,35 +226,35 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   menuTitle: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: 18,
+    fontFamily: FontFamily.semibold,
+    fontSize: FontSize.lg,
     color: Colors.text,
-    marginBottom: 4,
+    marginBottom: Spacing.sm,
   },
   menuArtist: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 15,
+    fontFamily: FontFamily.regular,
+    fontSize: FontSize.md,
     color: Colors.textSecondary,
   },
   menuDivider: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: Colors.border,
-    marginBottom: 8,
+    marginBottom: Spacing.md,
   },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingVertical: Spacing.md,
+    paddingHorizontal: Spacing.lg,
   },
   menuItemText: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 16,
+    fontFamily: FontFamily.regular,
+    fontSize: FontSize.md,
     color: Colors.text,
-    marginLeft: 16,
+    marginLeft: Spacing.lg,
   },
   deleteButton: {
-    marginTop: 8,
+    marginTop: Spacing.md,
   },
   deleteText: {
     color: Colors.tint,
