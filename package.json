@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env EXPO_NO_TELEMETRY=1 expo start",
-    "lint": "expo lint",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext ts,tsx --config .eslintrc.js",
     "start-with-tunnel": "concurrently \"npm run dev\" \"wait-on tcp:19000 && node ngrok-tunnel.js\""
   },
   "dependencies": {
@@ -54,7 +54,13 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~19.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
     "cross-env": "^7.0.3",
+    "eslint": "^9.28.0",
+    "eslint-config-expo": "^9.2.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-native": "^5.0.0",
     "typescript": "~5.8.3"
   }
 }
