@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Music, Plus } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
+import { FontFamily, FontSize, Spacing, Button } from '@/constants/Theme';
 import { importMusicFiles, showImportResult } from '@/utils/musicImport';
 import { usePlaybackStatus } from '@/hooks/usePlaybackStatus';
 import { useState } from 'react';
@@ -56,25 +57,25 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 24,
+    padding: Spacing.xl,
     backgroundColor: Colors.background,
   },
   iconContainer: {
-    marginBottom: 24,
+    marginBottom: Spacing.xl,
   },
   title: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: 22,
+    fontFamily: FontFamily.semibold,
+    fontSize: FontSize.xl,
     color: Colors.text,
-    marginBottom: 12,
+    marginBottom: Spacing.md,
     textAlign: 'center',
   },
   message: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 16,
+    fontFamily: FontFamily.regular,
+    fontSize: FontSize.md,
     color: Colors.textSecondary,
     textAlign: 'center',
-    marginBottom: 32,
+    marginBottom: Spacing.xxl,
     lineHeight: 22,
   },
   addButton: {
@@ -82,18 +83,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
+    paddingVertical: Button.paddingVertical,
+    paddingHorizontal: Button.paddingHorizontal,
     borderRadius: 100,
   },
   addButtonDisabled: {
     opacity: 0,
   },
   addButtonText: {
-    fontFamily: 'Inter-Medium',
-    fontSize: 16,
+    fontFamily: FontFamily.medium,
+    fontSize: FontSize.md,
     color: Colors.white,
-    marginLeft: 8,
+    marginLeft: Spacing.sm,
   },
 });
 

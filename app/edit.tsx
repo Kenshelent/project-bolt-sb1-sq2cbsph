@@ -9,6 +9,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { saveBase64ArtworkToFile, deleteArtworkFile } from '@/utils/artworkStorage';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { usePlaylists } from '@/hooks/usePlaylists';
+import { FontFamily, FontSize, Spacing, Button } from '@/constants/Theme';
 
 export default function EditSongScreen() {
   const { trackId } = useLocalSearchParams<{ trackId: string }>();
@@ -169,27 +170,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: Spacing.lg,
+    paddingVertical: Spacing.md,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: Colors.border,
   },
   headerText: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: 17,
+    fontFamily: FontFamily.semibold,
+    fontSize: FontSize.lg,
     color: Colors.text,
   },
   backButton: {
-    padding: 4,
+    padding: Spacing.xs,
     marginLeft: -4,
   },
   saveButton: {
-    paddingVertical: 6,
-    paddingHorizontal: 12,
+    paddingVertical: Button.paddingVertical,
+    paddingHorizontal: Button.paddingHorizontal,
   },
   saveButtonText: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: 17,
+    fontFamily: FontFamily.semibold,
+    fontSize: FontSize.lg,
     color: Colors.tint,
   },
   content: {
@@ -199,7 +200,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     alignSelf: 'center',
-    marginVertical: 24,
+    marginVertical: Spacing.xl,
     borderRadius: 8,
     overflow: 'hidden',
   },
@@ -214,28 +215,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   changeArtworkText: {
-    fontFamily: 'Inter-Medium',
-    fontSize: 14,
+    fontFamily: FontFamily.medium,
+    fontSize: FontSize.sm,
     color: Colors.white,
-    marginTop: 8,
+    marginTop: Spacing.sm,
   },
   form: {
-    padding: 16,
+    padding: Spacing.lg,
   },
   inputContainer: {
-    marginBottom: 16,
+    marginBottom: Spacing.lg,
   },
   label: {
-    fontFamily: 'Inter-Medium',
-    fontSize: 14,
+    fontFamily: FontFamily.medium,
+    fontSize: FontSize.sm,
     color: Colors.textSecondary,
-    marginBottom: 8,
+    marginBottom: Spacing.sm,
   },
   input: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 16,
+    fontFamily: FontFamily.regular,
+    fontSize: FontSize.md,
     color: Colors.text,
-    padding: Platform.OS === 'ios' ? 12 : 8,
+    padding: Platform.OS === 'ios' ? Spacing.md : Spacing.sm,
     backgroundColor: Colors.backgroundSecondary,
     borderRadius: 8,
   },
