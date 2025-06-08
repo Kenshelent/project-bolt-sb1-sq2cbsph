@@ -5,8 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env EXPO_NO_TELEMETRY=1 expo start",
-    "lint": "expo lint",
-    "start-with-tunnel": "concurrently \"npm run dev\" \"wait-on tcp:19000 && node ngrok-tunnel.js\""
+    "lint": "expo lint"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",
