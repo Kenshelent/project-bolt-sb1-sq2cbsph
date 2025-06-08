@@ -36,7 +36,7 @@ interface MusicContextType {
   addTracks: (newTracks: Track[]) => Promise<void>;
   updateTrack: (updatedTrack: Track) => Promise<void>;
   deleteTrack: (trackId: string) => Promise<void>;
-  playTrack: (track: Track, index: number) => void;
+  playTrack: (track: Track, index: number, resetQueue?: boolean) => void;
   togglePlayPause: () => void;
   seekTo: (position: number) => void;
   playNextTrack: () => void;
@@ -183,13 +183,17 @@ export const MusicProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   }, [tracks, currentTrackIndex, playbackInstance, saveMetadata]);
 
   const generatePlayQueue = useCallback((current: number) => {
-    const idxs = tracks.map((_, i) => i);
-    const queue = isShuffleMode ? idxs.sort(() => Math.random() - 0.5) : idxs;
+    const remaining = tracks
+      .map((_, i) => i)
+      .filter(i => i > current);
+    const queue = isShuffleMode
+      ? remaining.sort(() => Math.random() - 0.5)
+      : remaining;
     setPlayQueue(queue);
     return queue;
   }, [tracks, isShuffleMode]);
 
-  const playTrack = useCallback((track: Track, idx: number) => {
+  const playTrack = useCallback((track: Track, idx: number, resetQueue: boolean = true) => {
     if(playbackInstance) {
       playbackInstance?.replace(track);
       playbackInstance?.play();
@@ -205,7 +209,9 @@ export const MusicProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     // setPlaybackInstance(player);
     setIsPlaying(true);
     setCurrentTrackIndex(idx);
-    generatePlayQueue(idx);
+    if (resetQueue) {
+      generatePlayQueue(idx);
+    }
   }, [playbackInstance, generatePlayQueue]);
 
   const togglePlayPause = useCallback(() => {
@@ -221,18 +227,17 @@ export const MusicProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const playNextTrack = useCallback(() => {
     if (!playQueue.length) return;
-    const pos = playQueue.indexOf(currentTrackIndex);
-    const nextIdx = playQueue[(pos + 1) % playQueue.length];
-    playTrack(tracks[nextIdx], nextIdx);
-  }, [playQueue, currentTrackIndex, playTrack, tracks]);
+    const [nextIdx, ...rest] = playQueue;
+    setPlayQueue(rest);
+    playTrack(tracks[nextIdx], nextIdx, false);
+  }, [playQueue, playTrack, tracks]);
 
   const playPreviousTrack = useCallback(() => {
     if (position > 3000) { seekTo(0); return; }
-    if (!playQueue.length) return;
-    const pos = playQueue.indexOf(currentTrackIndex);
-    const prevIdx = playQueue[(pos - 1 + playQueue.length) % playQueue.length];
+    const prevIdx = currentTrackIndex - 1;
+    if (prevIdx < 0) return;
     playTrack(tracks[prevIdx], prevIdx);
-  }, [playQueue, currentTrackIndex, position, seekTo, playTrack, tracks]);
+  }, [currentTrackIndex, position, seekTo, playTrack, tracks]);
 
   const toggleShuffleMode = useCallback(() => setIsShuffleMode(prev => !prev), []);
   const toggleRepeatMode = useCallback(() => setIsRepeatMode(prev => !prev), []);
