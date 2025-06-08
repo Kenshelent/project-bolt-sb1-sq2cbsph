@@ -37,6 +37,7 @@ interface MusicContextType {
   updateTrack: (updatedTrack: Track) => Promise<void>;
   deleteTrack: (trackId: string) => Promise<void>;
   playTrack: (track: Track, index: number) => void;
+  stopTrack: () => void;
   togglePlayPause: () => void;
   seekTo: (position: number) => void;
   playNextTrack: () => void;
@@ -170,7 +171,7 @@ export const MusicProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const deleteTrack = useCallback(async (id: string) => {
     const idx = tracks.findIndex(t => t.id === id);
     if (idx < 0) return;
-    if (idx === currentTrackIndex) playbackInstance?.pause();
+    if (idx === currentTrackIndex) stopTrack();
     // Delete artwork file if exists
     if (tracks[idx].artwork) {
       await deleteArtworkFile(tracks[idx].artwork);
@@ -190,14 +191,12 @@ export const MusicProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   }, [tracks, isShuffleMode]);
 
   const playTrack = useCallback((track: Track, idx: number) => {
-    if(playbackInstance) {
-      playbackInstance?.replace(track);
-      playbackInstance?.play();
-    } else {
-      const player = createAudioPlayer({ uri: track.uri }, 1000);
-      player.play();
-      setPlaybackInstance(player);
+    if (playbackInstance) {
+      stopTrack();
     }
+    const player = createAudioPlayer({ uri: track.uri }, 1000);
+    player.play();
+    setPlaybackInstance(player);
   
     
     // const player = createAudioPlayer({ uri: track.uri }, 1000);
@@ -206,13 +205,23 @@ export const MusicProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setIsPlaying(true);
     setCurrentTrackIndex(idx);
     generatePlayQueue(idx);
-  }, [playbackInstance, generatePlayQueue]);
+  }, [playbackInstance, stopTrack, generatePlayQueue]);
 
   const togglePlayPause = useCallback(() => {
     if (!playbackInstance) return;
     if (isPlaying) playbackInstance.pause(); else playbackInstance.play();
     setIsPlaying(prev => !prev);
   }, [playbackInstance, isPlaying]);
+
+  const stopTrack = useCallback(() => {
+    if (!playbackInstance) return;
+    playbackInstance.pause();
+    playbackInstance.unload();
+    setPlaybackInstance(null);
+    setIsPlaying(false);
+    setPosition(0);
+    setDuration(0);
+  }, [playbackInstance]);
 
   const seekTo = useCallback((ms: number) => {
     playbackInstance?.seekTo(ms / 1000);
@@ -255,6 +264,7 @@ export const MusicProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     updateTrack,
     deleteTrack,
     playTrack,
+    stopTrack,
     togglePlayPause,
     seekTo,
     playNextTrack,
@@ -277,6 +287,7 @@ export const MusicProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     updateTrack,
     deleteTrack,
     playTrack,
+    stopTrack,
     togglePlayPause,
     seekTo,
     playNextTrack,
